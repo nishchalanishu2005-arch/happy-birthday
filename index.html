@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday Santhu 🎂</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url('download.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Popup styling */
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 255, 255, 0.95);
+      padding: 25px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(0,0,0,0.3);
+      z-index: 2000;
+      animation: pop 1s ease;
+      max-width: 420px;
+    }
+    @keyframes pop {
+      0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+      100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    }
+    .popup h2 {
+      font-size: 1.2rem;
+      color: #ff4081;
+      margin: 0;
+    }
+    .popup p {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #333;
+      margin: 10px 0 0 0;
+    }
+    .popup img {
+      max-width: 90%;
+      border-radius: 12px;
+      margin-top: 12px;
+      display:block;
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+    /* Hidden + animation */
+    .hidden { opacity: 0; transform: translateY(30px); }
+    .slide-in { animation: slideIn 1s forwards; }
+    @keyframes slideIn { 
+      0% { opacity: 0; transform: translateY(30px);} 
+      100% { opacity: 1; transform: translateY(0);} 
+    }
+
+    /* Main content */
+    .main-content { text-align: center; position: relative; z-index: 100; }
+    .main-content img { 
+      max-width: 320px; 
+      border-radius: 15px; 
+      margin: 15px auto; 
+      display: block; 
+      box-shadow: 0 8px 30px rgba(0,0,0,0.25); 
+    }
+    .final-msg { 
+      font-size: 1.1rem; 
+      color: #e91e63; 
+      font-weight: bold; 
+      margin-top: 6px;
+    }
+
+    /* Balloons */
+    .balloon { 
+      position: absolute; 
+      bottom: -150px; 
+      width: 80px; 
+      animation: floatUp 8s infinite ease-in; 
+      z-index: 1; 
+    }
+    @keyframes floatUp { 
+      0% { transform: translateY(0); opacity: 1; } 
+      100% { transform: translateY(-120vh); opacity: 0; } 
+    }
+
+    @media (max-width:480px){
+      .popup { max-width: 320px; } 
+      .main-content img { max-width: 220px; } 
+    }
+  </style>
+</head>
+<body>
+  <!-- Popup -->
+  <div id="popup" class="popup" role="dialog" aria-modal="true">
+    <h2>🎉 Happy Birthday Santhu ❤️❤️</h2>
+    <p>Wishing you all the success and happiness ✨</p>
+    <img src="source.gif" alt="Birthday GIF">
+  </div>
+
+  <!-- Main content -->
+  <div class="main-content" aria-hidden="true">
+    <img id="photo" src="santhu.jpg" alt="Santhu" class="hidden">
+    <p id="photo-msg" class="final-msg hidden">❤️ Happy Birthday Santhu ❤️</p>
+    <img id="gif2" src="cake.jpg" alt="Cake" class="hidden">
+    <p id="final-msg" class="final-msg hidden">🎂 Happy Birthday Santhu ❤️ 🎂</p>
+  </div>
+
+  <!-- Floating balloons -->
+  <img src="ballon.jpg" class="balloon" style="left:12%; animation-delay:0s;">
+  <img src="ballon.jpg" class="balloon" style="left:48%; animation-delay:3s;">
+  <img src="ballon.jpg" class="balloon" style="left:78%; animation-delay:6s;">
+
+  <script>
+    setTimeout(() => {
+      const popup = document.getElementById('popup');
+      popup.style.transition = 'opacity 0.6s ease';
+      popup.style.opacity = '0';
+      setTimeout(() => { 
+        popup.style.display = 'none'; 
+        document.querySelector('.main-content').removeAttribute('aria-hidden'); 
+      }, 650);
+
+      setTimeout(() => { document.getElementById('photo').classList.add('slide-in'); }, 700);
+      setTimeout(() => { document.getElementById('photo-msg').classList.add('slide-in'); }, 1500);
+      setTimeout(() => { document.getElementById('gif2').classList.add('slide-in'); }, 2200);
+      setTimeout(() => { document.getElementById('final-msg').classList.add('slide-in'); }, 3700);
+    }, 2800);
+  </script>
+</body>
+</html>
